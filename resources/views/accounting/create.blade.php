@@ -12,7 +12,7 @@
                 @csrf
                 <div class="pb-2">
                     <label for="description">Deskripsi</label>
-                    <input type="text" class="form-control" style="max-width: 25rem" name="description" id="description"
+                    <input type="text" class="form-control" style="max-width: 25rem" name="description" id="description" value="{{ old('description') }}"
                         placeholder="Contoh: Belanja bulanan...">
                 </div>
                 @error('description')
@@ -22,12 +22,23 @@
                 @enderror
                 <div class="pb-2">
                     <label for="date">Tanggal</label>
-                    <input type="date" class="form-control" style="max-width: 25rem" name="date" id="date">
+                    <input type="date" class="form-control" style="max-width: 25rem" name="date" id="date"
+                        value="{{ old('date') ?: Carbon\Carbon::now()->toDateString() }}">
                 </div>
+                @error('date')
+                    <p class="validation-invalid-label">
+                        <strong>{{ $message }}</strong>
+                    </p>
+                @enderror
                 <div class="pb-2">
                     <label for="total">Total pengeluaran</label>
                     <input type="text" class="form-control" style="max-width: 25rem" name="total" id="total">
                 </div>
+                @error('total')
+                    <p class="validation-invalid-label">
+                        <strong>{{ $message }}</strong>
+                    </p>
+                @enderror
 
                 <button class="btn btn-primary" type="submit">Save</button>
             </form>

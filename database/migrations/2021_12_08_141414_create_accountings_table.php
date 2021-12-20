@@ -17,7 +17,7 @@ class CreateAccountingsTable extends Migration
             $table->id();
             $table->string('user_id');
             $table->string('description');
-            $table->timestamp('date');
+            $table->dateTime('date');
             $table->bigInteger('total');
             $table->timestamps();
             $table->softDeletes();

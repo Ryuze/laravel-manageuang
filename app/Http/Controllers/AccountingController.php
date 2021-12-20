@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Accounting\AccountingCreateRequest;
+use App\Http\Requests\Accounting\AccountingRequest;
 use App\Models\Accounting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,16 +37,12 @@ class AccountingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AccountingCreateRequest $request)
+    public function store(AccountingRequest $request)
     {
         $userId = Auth::user()->id;
-        $total = $this->toNumber($request->total);
 
-        $accounting = Accounting::create([
+        Accounting::create($request->validated() + [
             'user_id' => $userId,
-            'description' => $request->description,
-            'date' => $request->date,
-            'total' => $total
         ]);
 
         Session::flash('status', 'Data berhasil ditambahkan');
@@ -82,7 +78,7 @@ class AccountingController extends Controller
      * @param  \App\Models\Accounting  $accounting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounting $accounting)
+    public function update(AccountingRequest $request, Accounting $accounting)
     {
         //
     }
@@ -96,10 +92,5 @@ class AccountingController extends Controller
     public function destroy(Accounting $accounting)
     {
         //
-    }
-
-    private function toNumber($total)
-    {
-        return (int)str_replace('.', '', substr($total, 4));
     }
 }

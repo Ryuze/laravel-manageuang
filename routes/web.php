@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Accounting;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +28,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/', function () {
             return view('dashboard.index');
         });
+
+        Route::resource('accounting', AccountingController::class)->except('show');
     });
 });

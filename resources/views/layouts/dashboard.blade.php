@@ -11,16 +11,22 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/imask"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>Document</title>
+    @yield('style')
+    <title>Dashboard | @yield('title')</title>
 </head>
 
 <body>
-    halo dunia
-    <img src="{{ asset('storage/profiles/32.jpg') }}" alt="">
-    @yield('content')
+    <x-navbar />
+    <div class="content">
+        <x-sidebar />
+        @yield('content')
+    </div>
+
+    @yield('script')
 </body>
 
 </html>

@@ -6,3 +6,22 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.content {
+    margin-top: 6rem;
+    margin-left: 1rem;
+}
+
+.sidebar {
+    display: none;
+}
+
+@include media-breakpoint-up(md) {
+    .content {
+        margin-left: 15rem;
+    }
+    
+    .sidebar {
+        display: block;
+    }
+}

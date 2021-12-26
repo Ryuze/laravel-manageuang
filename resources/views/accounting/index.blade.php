@@ -7,8 +7,12 @@
 @section('title', 'Accounting')
 
 @section('content')
-    <a href="{{ route('accounting.create') }}" class="btn btn-success">Add data</a>
-    disini bagian index accounting
+<div>
+    <a href="{{ route('accounting.create') }}" class="btn btn-success">{{ __('blades.Add Data') }}</a>
+    <div class="mt-2">
+        <livewire:accounting />
+    </div>
+</div>
 @endsection
 
 @section('script')

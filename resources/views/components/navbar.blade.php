@@ -12,9 +12,9 @@
                     {{ auth()->user()->name }}
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">Setting</a></li>
+                    <li><a href="#" class="dropdown-item">{{ __('blades.Setting') }}</a></li>
                     <li><a href="{{ route('logout') }}" class="dropdown-item"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('blades.Logout') }}</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
@@ -24,10 +24,10 @@
         @else
             <div class="d-flex flex-row">
                 <div class="me-2">
-                    <a class="btn btn-primary" href="{{ Route('login') }}">Login</a>
+                    <a class="btn btn-primary" href="{{ Route('login') }}">{{ __('blades.Login') }}</a>
                 </div>
                 <div>
-                    <a class="btn btn-success" href="{{ route('register') }}">Register</a>
+                    <a class="btn btn-success" href="{{ route('register') }}">{{ __('blades.Register') }}</a>
                 </div>
             </div>
         @endauth

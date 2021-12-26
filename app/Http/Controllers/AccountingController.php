@@ -17,7 +17,6 @@ class AccountingController extends Controller
      */
     public function index()
     {
-        // TODO: bikin tampilan table view nya
         return view('accounting.index');
     }
 

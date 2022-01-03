@@ -67,7 +67,7 @@ class AccountingController extends Controller
      */
     public function edit(Accounting $accounting)
     {
-        //
+        return view('accounting.edit', compact('accounting'));
     }
 
     /**
@@ -79,7 +79,11 @@ class AccountingController extends Controller
      */
     public function update(AccountingRequest $request, Accounting $accounting)
     {
-        //
+        Accounting::where('id', $accounting->id)
+            ->update($request->except(['_token', '_method']));
+
+        Session::flash('status', 'Data berhasil diubah');
+        return redirect()->route('accounting.index');
     }
 
     /**

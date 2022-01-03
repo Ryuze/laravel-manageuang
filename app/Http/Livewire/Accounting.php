@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Accounting as ModelsAccounting;
+use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -27,8 +27,8 @@ class Accounting extends Component
 
     private function accountingPaginate10()
     {
-        return ModelsAccounting::where('deleted_at', null)
-            ->where('user_id', auth()->user()->id)
+        return User::find(auth()->user()->id)->accountings()
+            ->where('deleted_at', null)
             ->orderBy('date', 'desc')
             ->paginate(10);
     }

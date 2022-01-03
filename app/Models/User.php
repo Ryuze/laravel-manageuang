@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the accounting data for user
+     */
+    public function accountings()
+    {
+        return $this->hasMany(Accounting::class);
+    }
 }
